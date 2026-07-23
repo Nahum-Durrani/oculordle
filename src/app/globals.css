@@ -1,0 +1,237 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/*
+ * Oculordle design tokens — ported 1:1 from the Oculordle.dc.html design
+ * export (Claude Design project afc80f9e). Light mode only, by product
+ * decision — there is no .dark variant and no dark-mode toggle.
+ */
+:root {
+  --background: #f7f8fa;
+  --foreground: #16233a;
+
+  --surface: #ffffff;
+  --surface-sunken: #f0f4fa;
+
+  --ink: #16233a;
+  --ink-soft: #5b6b82;
+
+  --border: #e4e8ee;
+  --border-strong: #d3dce8;
+
+  --cobalt: #1957a4;
+  --cobalt-hover: #12457f;
+  --cobalt-soft: #eef3fa;
+  --cobalt-deep: #103e75;
+
+  --deep-navy: #0b2e58;
+  --hero-1: #155091;
+  --hero-2: #103e75;
+  --hero-3: #0b2e58;
+
+  --green: #2f9e6e;
+  --green-hover: #28855d;
+  /* Text-safe variant: #2f9e6e is only ~3.4:1 on white, below the 4.5:1 small-text
+     floor. Use this for green text/labels; keep --green for large-area fills. */
+  --green-text: #1f7e56;
+
+  --amber: #e0a82e;
+  /* Same reasoning as --green-text: #e0a82e is ~2.1:1 on white. */
+  --amber-text: #8a6410;
+
+  /* Darkened from the design export's #8b98ab (2.9:1 on white) to clear 4.5:1. */
+  --slate: #63728a;
+
+  --pupil-dark: #0b1620;
+
+  --destructive: #d9534f;
+  --destructive-soft: #f4d9d7;
+  /* Same reasoning as --green-text/--amber-text: #d9534f is ~4:1 on white. */
+  --destructive-text: #b23b37;
+
+  /* feedback tiers */
+  --fb-correct-bg: #eaf6f0;
+  --fb-correct-border: #b7e0cc;
+  --fb-correct-text: #22754f;
+  --fb-close-bg: #fbf3e2;
+  --fb-close-border: #edd9a9;
+  --fb-close-text: #8a6410;
+  --fb-wrong-bg: #f2f4f7;
+  --fb-wrong-border: #e0e5ec;
+  --fb-wrong-text: #5b6b82;
+
+  /* shadcn semantic slots */
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--cobalt);
+  --primary-foreground: var(--surface);
+  --secondary: var(--surface-sunken);
+  --secondary-foreground: var(--ink);
+  --muted: var(--surface-sunken);
+  --muted-foreground: var(--ink-soft);
+  --accent: var(--cobalt-soft);
+  --accent-foreground: var(--cobalt-deep);
+  --input: var(--border-strong);
+  --ring: var(--cobalt);
+
+  --chart-1: var(--cobalt);
+  --chart-2: var(--green);
+  --chart-3: var(--amber);
+  --chart-4: var(--cobalt-deep);
+  --chart-5: var(--slate);
+
+  --sidebar: var(--deep-navy);
+  --sidebar-foreground: var(--surface);
+  --sidebar-primary: var(--green);
+  --sidebar-primary-foreground: var(--surface);
+  --sidebar-accent: rgba(255, 255, 255, 0.08);
+  --sidebar-accent-foreground: var(--surface);
+  --sidebar-border: rgba(255, 255, 255, 0.14);
+  --sidebar-ring: var(--green);
+
+  --radius: 12px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-sunken: var(--surface-sunken);
+
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-cobalt: var(--cobalt);
+  --color-cobalt-hover: var(--cobalt-hover);
+  --color-cobalt-soft: var(--cobalt-soft);
+  --color-cobalt-deep: var(--cobalt-deep);
+
+  --color-deep-navy: var(--deep-navy);
+  --color-hero-1: var(--hero-1);
+  --color-hero-2: var(--hero-2);
+  --color-hero-3: var(--hero-3);
+
+  --color-green: var(--green);
+  --color-green-hover: var(--green-hover);
+  --color-green-text: var(--green-text);
+
+  --color-amber: var(--amber);
+  --color-amber-text: var(--amber-text);
+  --color-slate: var(--slate);
+
+  --color-pupil-dark: var(--pupil-dark);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-soft: var(--destructive-soft);
+  --color-destructive-text: var(--destructive-text);
+
+  --color-fb-correct-bg: var(--fb-correct-bg);
+  --color-fb-correct-border: var(--fb-correct-border);
+  --color-fb-correct-text: var(--fb-correct-text);
+  --color-fb-close-bg: var(--fb-close-bg);
+  --color-fb-close-border: var(--fb-close-border);
+  --color-fb-close-text: var(--fb-close-text);
+  --color-fb-wrong-bg: var(--fb-wrong-bg);
+  --color-fb-wrong-border: var(--fb-wrong-border);
+  --color-fb-wrong-text: var(--fb-wrong-text);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-display: var(--font-inter);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-plex-mono);
+  --font-sans: var(--font-inter);
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+  --radius-2xl: 16px;
+  --radius-3xl: 16px;
+  --radius-4xl: 16px;
+}
+
+::selection {
+  background: var(--cobalt-soft);
+}
+
+:focus-visible {
+  outline: 2px solid var(--cobalt);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    position: relative;
+  }
+  html {
+    @apply font-sans;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+  button:disabled,
+  [role="button"][aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+}
+
+@keyframes ocu-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(7px);
+  }
+}
