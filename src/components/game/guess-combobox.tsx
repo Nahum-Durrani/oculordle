@@ -25,9 +25,12 @@ interface GuessComboboxProps {
  * the shared shadcn Command wrapper, whose forced rounded-xl!/bg-popover
  * chrome fights our own card styling here.
  *
- * Enter always submits the current input text, even with the list open —
- * a wrong/unmatched guess still resolves and counts. Suggestions are a
- * convenience, accepted by click (or Tab), not by Enter.
+ * Enter submits the highlighted suggestion (matching what click does) when
+ * the list is open, and falls back to submitting the raw input text
+ * otherwise — a wrong/unmatched guess still resolves and counts. Without
+ * this, a still-narrowing query like "coats d" wouldn't exact-match the
+ * canonical diagnosis/alias text that isCorrectGuess checks against, even
+ * though the correct option was visibly highlighted.
  */
 export function GuessCombobox({ cases, guessesMade, disabled, onSubmit, className }: GuessComboboxProps) {
   const [query, setQuery] = useState("");
@@ -40,6 +43,7 @@ export function GuessCombobox({ cases, guessesMade, disabled, onSubmit, classNam
   // which re-fires onFocus a tick after handleSelect closes the list — this
   // flag suppresses that one reopen so a click-selection actually closes it.
   const justSelectedRef = useRef(false);
+  const listRef = useRef<HTMLDivElement>(null);
 
   const results = useMemo<DiagnosisOption[]>(
     () => (query.trim() ? searchDiagnoses(cases, query, 6) : []),
@@ -53,8 +57,8 @@ export function GuessCombobox({ cases, guessesMade, disabled, onSubmit, classNam
     setDuplicateError(false);
   };
 
-  const handleSubmit = () => {
-    const trimmed = query.trim();
+  const submitGuess = (text: string) => {
+    const trimmed = text.trim();
     if (!trimmed || disabled) return;
     const wasDuplicate = onSubmit(trimmed);
     if (wasDuplicate) {
@@ -65,6 +69,19 @@ export function GuessCombobox({ cases, guessesMade, disabled, onSubmit, classNam
     setQuery("");
     setOpen(false);
     setDuplicateError(false);
+  };
+
+  const handleSubmit = () => submitGuess(query);
+
+  // cmdk tracks which suggestion is keyboard-highlighted internally and
+  // doesn't expose it as a prop we're subscribed to — read it off the DOM
+  // (the highlighted cmdk-item carries data-selected="true" and data-value
+  // is the same `${caseId}-${canonicalName}` string passed as its value).
+  const highlightedOption = (): DiagnosisOption | undefined => {
+    const highlightedEl = listRef.current?.querySelector<HTMLElement>('[cmdk-item][data-selected="true"]');
+    const highlightedValue = highlightedEl?.getAttribute("data-value");
+    if (!highlightedValue) return undefined;
+    return results.find((r) => `${r.caseId}-${r.canonicalName}` === highlightedValue);
   };
 
   const showList = open && results.length > 0;
@@ -98,7 +115,12 @@ export function GuessCombobox({ cases, guessesMade, disabled, onSubmit, classNam
               if (e.key === "Enter") {
                 e.preventDefault();
                 e.stopPropagation();
-                handleSubmit();
+                const highlighted = showList ? highlightedOption() : undefined;
+                if (highlighted) {
+                  submitGuess(highlighted.canonicalName);
+                } else {
+                  handleSubmit();
+                }
               } else if (e.key === "Escape") {
                 setOpen(false);
               }
@@ -150,6 +172,7 @@ export function GuessCombobox({ cases, guessesMade, disabled, onSubmit, classNam
             className="absolute top-full right-0 left-0 z-20 mt-1.5"
           >
             <CommandPrimitive.List
+              ref={listRef}
               id={listId}
               className="max-h-65 w-full overflow-y-auto rounded-xl border border-border bg-surface shadow-[0_12px_34px_rgba(16,35,58,.16)]"
             >
