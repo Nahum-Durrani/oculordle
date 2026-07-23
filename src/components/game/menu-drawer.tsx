@@ -81,7 +81,7 @@ export function MenuDrawer({ open, onOpenChange, onHowToPlay }: MenuDrawerProps)
           </nav>
 
           <p className="mt-auto font-mono text-[10px] leading-relaxed tracking-[0.14em] text-white/60 uppercase">
-            For medical education only — not medical advice. Cases are AI-drafted, pending physician review.
+            For medical education only — not medical advice.
           </p>
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>
