@@ -17,12 +17,12 @@ const CO_DIRECTORS_ANCHOR = "co-directors";
 const TEAM: TeamMember[] = [
   {
     name: "Faizan Naveed",
-    role: "BHSc, MD(c) · Faculty of Medicine, University of Ottawa",
+    role: "Co-Director · BHSc, MD(c) · Faculty of Medicine, University of Ottawa",
     image: "/team/co-director-1.png",
   },
   {
     name: "Salem Abu Al-Burak",
-    role: "BMSc, MD(c) · Schulich Medicine & Dentistry, Western University",
+    role: "Co-Director · BMSc, MD(c) · Schulich Medicine & Dentistry, Western University",
     image: "/team/salem-abu-al-burak.png",
   },
   {
@@ -32,7 +32,7 @@ const TEAM: TeamMember[] = [
   },
   {
     name: "Fahad Butt",
-    role: "BSc, MD(c) · Schulich Medicine & Dentistry, Western University",
+    role: "Co-Director · BSc, MD(c) · Schulich Medicine & Dentistry, Western University",
     image: "/team/fahad-butt.png",
   },
 ];
@@ -151,7 +151,7 @@ export function HomeView() {
         </motion.button>
       </section>
 
-      <section className="mx-auto w-full max-w-[1000px] px-7 pt-25 pb-22.5">
+      <section className="mx-auto w-full max-w-[1320px] px-7 pt-25 pb-22.5">
         <motion.div id={CO_DIRECTORS_ANCHOR} {...revealOnView(0)} className="mb-14 scroll-mt-8 text-center">
           <p className="mb-3.5 font-mono text-xs tracking-[0.2em] text-slate uppercase">The team behind the cases</p>
           <h2 className="font-display text-[38px] font-extrabold tracking-tight text-ink">
