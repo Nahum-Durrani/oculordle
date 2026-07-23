@@ -9,7 +9,7 @@ export interface TeamMember {
 }
 
 const cardBase =
-  "flex gap-4 rounded-[14px] border border-border bg-surface shadow-[0_3px_14px_rgba(16,35,58,.05)]";
+  "flex h-full gap-4 rounded-[14px] border border-border bg-surface shadow-[0_3px_14px_rgba(16,35,58,.05)]";
 
 function RoleLine({
   role,

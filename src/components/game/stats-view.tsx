@@ -24,7 +24,7 @@ export function StatsView() {
       <main className="mx-auto flex w-full max-w-[860px] flex-1 flex-col gap-7.5 px-7 py-11.5 sm:py-11.5">
         <div className="flex flex-col gap-2">
           <h1 className="font-display text-[34px] font-extrabold tracking-tight text-ink">
-            How you&rsquo;re reading the retina
+            How you&rsquo;ve been guessing
           </h1>
           <p className="text-[15px] text-ink-soft">Every case you&rsquo;ve guessed, win or lose, tallied here.</p>
         </div>

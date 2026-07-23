@@ -30,6 +30,11 @@ const TEAM: TeamMember[] = [
     role: "Software Developer & Website Lead · B.Eng, York University",
     image: "/team/nahum-durrani.jpg",
   },
+  {
+    name: "Fahad Butt",
+    role: "BSc, MD(c) · Schulich Medicine & Dentistry, Western University",
+    image: "/team/fahad-butt.png",
+  },
 ];
 
 export function HomeView() {
@@ -154,9 +159,9 @@ export function HomeView() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-6.5 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6.5 sm:grid-cols-2 lg:grid-cols-4">
           {TEAM.map((person, i) => (
-            <motion.div key={person.name} {...revealOnView(i * 0.1)}>
+            <motion.div key={person.name} {...revealOnView(i * 0.1)} className="h-full">
               <TeamCard {...person} roleStyle="caption" />
             </motion.div>
           ))}
