@@ -1,7 +1,6 @@
 import Image from "next/image";
 
-const DISCLAIMER =
-  "For medical education only — not medical advice. Cases are AI-drafted, pending physician review.";
+const DISCLAIMER = "For medical education only — not medical advice.";
 
 export function SiteFooter({ variant = "plain" }: { variant?: "plain" | "home" }) {
   if (variant === "home") {
