@@ -17,22 +17,26 @@ const CO_DIRECTORS_ANCHOR = "co-directors";
 const TEAM: TeamMember[] = [
   {
     name: "Faizan Naveed",
-    role: "Co-Director · BHSc, MD(c) · Faculty of Medicine, University of Ottawa",
+    role: "Co-Director",
+    education: "BHSc, MD(c) · Faculty of Medicine, University of Ottawa",
     image: "/team/co-director-1.png",
   },
   {
     name: "Salem Abu Al-Burak",
-    role: "Co-Director · BMSc, MD(c) · Schulich Medicine & Dentistry, Western University",
+    role: "Co-Director",
+    education: "BMSc, MD(c) · Schulich Medicine & Dentistry, Western University",
     image: "/team/salem-abu-al-burak.png",
   },
   {
     name: "Nahum Durrani",
-    role: "Software Developer & Website Lead · B.Eng, York University",
+    role: "Founding Engineer",
+    education: "B.Eng, York University",
     image: "/team/nahum-durrani.jpg",
   },
   {
     name: "Fahad Butt",
-    role: "Co-Director · BSc, MD(c) · Schulich Medicine & Dentistry, Western University",
+    role: "Co-Director",
+    education: "BSc, MD(c) · Schulich Medicine & Dentistry, Western University",
     image: "/team/fahad-butt.png",
   },
 ];

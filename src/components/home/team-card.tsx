@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 export interface TeamMember {
   name: string;
   role: string;
+  education: string;
   blurb?: string;
   image: string;
 }
@@ -24,7 +25,7 @@ function RoleLine({
 }) {
   if (roleStyle === "caption") {
     return (
-      <p className={cn("font-mono text-xs text-slate", className)}>{role}</p>
+      <p className={cn("font-mono text-xs font-semibold text-ink", className)}>{role}</p>
     );
   }
   return (
@@ -40,6 +41,7 @@ function RoleLine({
 export function TeamCard({
   name,
   role,
+  education,
   blurb,
   image,
   roleColor = "#1957a4",
@@ -56,6 +58,7 @@ export function TeamCard({
       <div>
         <p className="font-display text-xl font-bold text-ink">{name}</p>
         <RoleLine role={role} roleColor={roleColor} roleStyle={roleStyle} className="mt-1.5" />
+        <p className="mt-1 font-mono text-xs text-slate">{education}</p>
       </div>
       {blurb && <p className="max-w-[340px] text-[15px] leading-[1.6] text-ink-soft">{blurb}</p>}
     </div>
