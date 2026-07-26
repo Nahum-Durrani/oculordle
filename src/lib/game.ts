@@ -67,7 +67,7 @@ export function applyGuess(
     ? todaysCase.diagnosis
     : (topMatch?.canonicalName ?? null);
 
-  const isDuplicate = progress.guesses.some((g) =>
+  const isDuplicate = !correct && progress.guesses.some((g) =>
     resolved !== null ? g.resolved === resolved : g.resolved === null && normalize(g.raw) === normalize(rawGuess),
   );
   if (isDuplicate) {
