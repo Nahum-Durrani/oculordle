@@ -171,10 +171,10 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  --font-display: var(--font-inter);
-  --font-body: var(--font-inter);
-  --font-mono: var(--font-plex-mono);
-  --font-sans: var(--font-inter);
+  --font-display: var(--font-geist);
+  --font-body: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-geist);
 
   --radius-sm: 6px;
   --radius-md: 8px;
