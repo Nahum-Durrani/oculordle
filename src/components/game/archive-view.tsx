@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { SiteHeader } from "@/components/game/site-header";
 import { SiteFooter } from "@/components/game/site-footer";
-import { DIFFICULTY_COLOR } from "@/components/game/case-badges";
+import { DIFFICULTY_TEXT_COLOR } from "@/components/game/case-badges";
 import { getAllCases, getCaseForDay, getDailyCase } from "@/lib/case-data";
 import { dateForDay, getDayNumber } from "@/lib/date";
 import { getOrInitProgress } from "@/lib/game";
@@ -35,7 +35,7 @@ function statusLabel(entry: ArchiveEntry): { text: string; color: string } | nul
   if (!entry.isToday) return null;
   if (entry.status === "won") return { text: `✓ Solved ${entry.guessCount}/5`, color: "#1f7e56" };
   if (entry.status === "lost") return { text: "✗ Out of guesses", color: "#5b6b82" };
-  return { text: "● Today", color: "#1957a4" };
+  return { text: "Today", color: "#1957a4" };
 }
 
 function ArchiveCard({ entry }: { entry: ArchiveEntry }) {
@@ -48,18 +48,14 @@ function ArchiveCard({ entry }: { entry: ArchiveEntry }) {
           "transition-[transform,box-shadow] duration-150 hover:-translate-y-1 hover:shadow-[0_10px_26px_rgba(16,35,58,.1)]",
         )}
       >
-        <div className="flex items-center justify-between">
-          <span className="font-mono text-xs font-semibold tracking-[0.08em] text-cobalt-deep">
-            {formatArchiveDate(entry.date)}
-          </span>
-          <span
-            aria-hidden="true"
-            className="size-3 rounded-[3px]"
-            style={{ background: DIFFICULTY_COLOR[entry.case.difficulty] }}
-          />
-        </div>
+        <span className="font-mono text-xs font-semibold tracking-[0.08em] text-cobalt-deep">
+          {formatArchiveDate(entry.date)}
+        </span>
         <p className="line-clamp-3 flex-1 text-base leading-[1.35] font-bold text-ink">{entry.case.clues[0]}</p>
-        <p className="font-mono text-[10px] tracking-[0.1em] text-slate uppercase">
+        <p
+          className="font-mono text-[10px] tracking-[0.1em] uppercase"
+          style={{ color: DIFFICULTY_TEXT_COLOR[entry.case.difficulty] }}
+        >
           {entry.isToday && (entry.status === "won" || entry.status === "lost")
             ? `${entry.case.categories[0]} · ${entry.case.difficulty}`
             : entry.case.difficulty}
@@ -146,16 +142,10 @@ export function ArchiveView() {
               type="button"
               onClick={() => setFilter(f)}
               className={cn(
-                "flex items-center gap-1.5 rounded-full border border-border bg-surface px-3.5 py-1.75 font-mono text-[10.5px] tracking-[0.12em] uppercase transition-colors",
+                "rounded-full border border-border bg-surface px-3.5 py-1.75 font-mono text-[10.5px] tracking-[0.12em] uppercase transition-colors",
                 filter === f ? "text-ink" : "text-ink-soft hover:text-ink",
               )}
             >
-              {f !== "All" && (
-                <span
-                  className="size-1.75 rounded-full"
-                  style={{ background: DIFFICULTY_COLOR[f as Difficulty] }}
-                />
-              )}
               {f}
             </button>
           ))}
@@ -168,10 +158,7 @@ export function ArchiveView() {
                 key={i}
                 className="flex min-h-[176px] animate-pulse flex-col gap-3 rounded-[13px] border border-border bg-surface p-5"
               >
-                <div className="flex items-center justify-between">
-                  <div className="h-3 w-20 rounded-full bg-[#eef1f5]" />
-                  <div className="size-3 rounded-[3px] bg-[#eef1f5]" />
-                </div>
+                <div className="h-3 w-20 rounded-full bg-[#eef1f5]" />
                 <div className="flex-1 space-y-2">
                   <div className="h-3.5 w-full rounded-full bg-[#eef1f5]" />
                   <div className="h-3.5 w-4/5 rounded-full bg-[#eef1f5]" />

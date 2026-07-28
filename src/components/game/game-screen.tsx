@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useGame } from "@/hooks/use-game";
-import { DIFFICULTY_TEXT_COLOR, DifficultyDot } from "@/components/game/case-badges";
+import { DIFFICULTY_TEXT_COLOR } from "@/components/game/case-badges";
 import { ClueList } from "@/components/game/clue-list";
 import { GuessCombobox } from "@/components/game/guess-combobox";
 import { GuessHistory } from "@/components/game/guess-history";
@@ -74,7 +74,6 @@ export function GameScreen() {
         <div className="flex w-full max-w-[720px] flex-col gap-5">
           <div className="flex flex-wrap items-center justify-between gap-2.5">
             <div className="flex flex-wrap items-center gap-2.5">
-              <DifficultyDot difficulty={todaysCase.difficulty} />
               <span className="font-mono text-xs tracking-[0.14em] text-cobalt uppercase">
                 Case #{dayNumber} · {isDone && `${todaysCase.categories[0]} · `}
                 <span style={{ color: DIFFICULTY_TEXT_COLOR[todaysCase.difficulty] }}>{todaysCase.difficulty}</span>

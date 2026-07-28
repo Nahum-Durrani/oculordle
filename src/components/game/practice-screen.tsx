@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
-import { DIFFICULTY_TEXT_COLOR, DifficultyDot } from "@/components/game/case-badges";
+import { DIFFICULTY_TEXT_COLOR } from "@/components/game/case-badges";
 import { ClueList } from "@/components/game/clue-list";
 import { GuessCombobox } from "@/components/game/guess-combobox";
 import { GuessHistory } from "@/components/game/guess-history";
@@ -106,7 +106,6 @@ export function PracticeScreen({ day }: { day: number }) {
           <div className="flex flex-col gap-3.5">
             <div className="flex flex-wrap items-center justify-between gap-2.5">
               <div className="flex flex-wrap items-center gap-2.5">
-                <DifficultyDot difficulty={caseData.difficulty} />
                 <span className="font-mono text-xs tracking-[0.14em] text-cobalt uppercase">
                   Case #{day} · {isDone && `${caseData.categories[0]} · `}
                   <span style={{ color: DIFFICULTY_TEXT_COLOR[caseData.difficulty] }}>{caseData.difficulty}</span>
