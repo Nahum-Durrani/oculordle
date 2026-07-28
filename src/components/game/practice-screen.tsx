@@ -12,7 +12,7 @@ import { ResultPanel } from "@/components/game/result-panel";
 import { SiteHeader } from "@/components/game/site-header";
 import { SiteFooter } from "@/components/game/site-footer";
 import { getAllCases, getCaseForDay } from "@/lib/case-data";
-import { createInitialProgress, applyGuess, earnedPoints, potentialPoints } from "@/lib/game";
+import { createInitialProgress, applyGuess } from "@/lib/game";
 import type { DailyProgress } from "@/lib/storage";
 import type { OphthoCase } from "@/types/case";
 
@@ -87,14 +87,11 @@ export function PracticeScreen({ day }: { day: number }) {
   }
 
   const isDone = progress.status !== "in-progress";
-  const won = progress.status === "won";
-  const lost = progress.status === "lost";
   const displayRevealed = isDone ? 5 : progress.cluesRevealed;
-  const points = won ? earnedPoints(progress.guesses.length) : lost ? 0 : potentialPoints(progress.guesses.length);
 
   return (
     <div className="flex min-h-full flex-1 flex-col">
-      <SiteHeader points={points} />
+      <SiteHeader />
 
       <main className="flex flex-1 justify-center px-4 py-6.5 sm:px-5.5">
         <div className="flex w-full max-w-[720px] flex-col gap-5">

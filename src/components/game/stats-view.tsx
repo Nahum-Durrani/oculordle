@@ -4,12 +4,10 @@ import { useEffect, useState } from "react";
 import { SiteHeader } from "@/components/game/site-header";
 import { SiteFooter } from "@/components/game/site-footer";
 import { StatsPanel } from "@/components/game/stats-panel";
-import { useHeaderPoints } from "@/hooks/use-header-points";
 import { EMPTY_STATS, loadStats, type LifetimeStats } from "@/lib/storage";
 
 export function StatsView() {
   const [stats, setStats] = useState<LifetimeStats>(EMPTY_STATS);
-  const points = useHeaderPoints();
 
   useEffect(() => {
     (() => {
@@ -19,7 +17,7 @@ export function StatsView() {
 
   return (
     <div className="flex min-h-full flex-1 flex-col">
-      <SiteHeader points={points} />
+      <SiteHeader />
 
       <main className="mx-auto flex w-full max-w-[860px] flex-1 flex-col gap-7.5 px-7 py-11.5 sm:py-11.5">
         <div className="flex flex-col gap-2">

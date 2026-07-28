@@ -8,7 +8,6 @@ import { DIFFICULTY_COLOR } from "@/components/game/case-badges";
 import { getAllCases, getCaseForDay, getDailyCase } from "@/lib/case-data";
 import { dateForDay, getDayNumber } from "@/lib/date";
 import { getOrInitProgress } from "@/lib/game";
-import { useHeaderPoints } from "@/hooks/use-header-points";
 import { loadProgress, type RoundStatus } from "@/lib/storage";
 import type { Difficulty, OphthoCase } from "@/types/case";
 import { cn } from "@/lib/utils";
@@ -82,7 +81,6 @@ export function ArchiveView() {
   const [caseCount, setCaseCount] = useState(0);
   const [dayNumber, setDayNumber] = useState(0);
   const [filter, setFilter] = useState<Filter>("All");
-  const points = useHeaderPoints();
 
   useEffect(() => {
     let cancelled = false;
@@ -129,7 +127,7 @@ export function ArchiveView() {
 
   return (
     <div className="flex min-h-full flex-1 flex-col">
-      <SiteHeader points={points} />
+      <SiteHeader />
 
       <main className="mx-auto flex w-full max-w-[1000px] flex-1 flex-col px-7 py-11.5">
         <h1 className="mb-2 font-display text-[34px] font-extrabold tracking-tight text-ink">

@@ -6,7 +6,6 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { searchDiagnoses, type DiagnosisOption } from "@/lib/match";
-import { potentialPoints } from "@/lib/game";
 import { MAX_GUESSES } from "@/lib/config";
 import type { OphthoCase } from "@/types/case";
 import { cn } from "@/lib/utils";
@@ -197,7 +196,7 @@ export function GuessCombobox({ cases, guessesMade, disabled, onSubmit, classNam
       </AnimatePresence>
       </CommandPrimitive>
 
-      <div className="mt-2.5 flex flex-wrap items-center justify-between gap-1.5">
+      <div className="mt-2.5">
         <span
           className={cn(
             "font-mono text-[11px] tracking-[0.1em]",
@@ -205,9 +204,6 @@ export function GuessCombobox({ cases, guessesMade, disabled, onSubmit, classNam
           )}
         >
           {duplicateError ? "You already tried this — pick another diagnosis" : `${remaining} guess${remaining === 1 ? "" : "es"} left`}
-        </span>
-        <span className="font-mono text-[11px] tracking-[0.1em] text-green-text uppercase">
-          Solve now · +{potentialPoints(guessesMade)} pts
         </span>
       </div>
     </div>

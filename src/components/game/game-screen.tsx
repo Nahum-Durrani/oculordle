@@ -13,7 +13,6 @@ import { SiteHeader } from "@/components/game/site-header";
 import { SiteFooter } from "@/components/game/site-footer";
 import { StatsPanel } from "@/components/game/stats-panel";
 import { ShareButton } from "@/components/game/share-button";
-import { earnedPoints, potentialPoints } from "@/lib/game";
 import { cn } from "@/lib/utils";
 
 /** Mirrors the loaded layout's shape (banner, case header, five clue cards, input row) so nothing jumps into place once data arrives. */
@@ -65,14 +64,11 @@ export function GameScreen() {
     return <GameScreenSkeleton />;
   }
 
-  const won = progress.status === "won";
-  const lost = progress.status === "lost";
   const displayRevealed = isDone ? 5 : progress.cluesRevealed;
-  const points = won ? earnedPoints(progress.guesses.length) : lost ? 0 : potentialPoints(progress.guesses.length);
 
   return (
     <div className="flex min-h-full flex-1 flex-col">
-      <SiteHeader points={points} />
+      <SiteHeader />
 
       <main className="flex flex-1 justify-center px-4 py-6.5 sm:px-5.5">
         <div className="flex w-full max-w-[720px] flex-col gap-5">

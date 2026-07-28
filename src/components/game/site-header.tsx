@@ -7,22 +7,22 @@ import { Menu } from "lucide-react";
 import { MenuDrawer } from "@/components/game/menu-drawer";
 import { HowToPlayDialog } from "@/components/game/how-to-play-dialog";
 
-export function SiteHeader({ points }: { points?: number }) {
+export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [howToPlayOpen, setHowToPlayOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-20 flex items-center justify-between border-b border-border bg-surface px-6 py-4">
+    <header className="sticky top-0 z-20 grid grid-cols-[1fr_auto_1fr] items-center border-b border-border bg-surface px-6 py-4">
       <button
         type="button"
         aria-label="Menu"
         onClick={() => setMenuOpen(true)}
-        className="-m-2 flex flex-col gap-[5px] p-3.5"
+        className="-m-2 flex flex-col gap-[5px] p-3.5 justify-self-start"
       >
         <Menu className="size-6 text-ink" strokeWidth={1.75} aria-hidden="true" />
       </button>
 
-      <Link href="/" aria-label="Oculordle home" className="flex items-center">
+      <Link href="/" aria-label="Oculordle home" className="flex items-center justify-self-center">
         <Image
           src="/oculordle-logo.png"
           alt="Oculordle"
@@ -32,12 +32,6 @@ export function SiteHeader({ points }: { points?: number }) {
           className="h-[27px] w-auto opacity-90 brightness-0 saturate-100"
         />
       </Link>
-
-      <div className="flex items-center gap-1.5 rounded-full border border-[#dbe5f2] bg-cobalt-soft py-1.5 pr-3.5 pl-2.5">
-        <span className="size-2 rounded-full bg-green" aria-hidden="true" />
-        <span className="text-[15px] font-bold text-cobalt-deep tabular-nums">{points ?? "—"}</span>
-        <span className="font-mono text-[10px] tracking-[0.12em] text-slate uppercase">Pts</span>
-      </div>
 
       <MenuDrawer open={menuOpen} onOpenChange={setMenuOpen} onHowToPlay={() => setHowToPlayOpen(true)} />
       <HowToPlayDialog open={howToPlayOpen} onOpenChange={setHowToPlayOpen} />

@@ -170,13 +170,3 @@ export function getGuessFeedback(
   if (matched && matched.categories.some((cat) => todaysCase.categories.includes(cat))) return "close";
   return "wrong";
 }
-
-/** Points if the player solves on their very next guess, given how many guesses are already used. */
-export function potentialPoints(guessesMade: number): number {
-  return Math.max(40, 200 - guessesMade * 40);
-}
-
-/** Points actually awarded for winning after using `guessesUsed` guesses. */
-export function earnedPoints(guessesUsed: number): number {
-  return Math.max(40, 200 - (guessesUsed - 1) * 40);
-}
