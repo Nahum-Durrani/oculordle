@@ -41,10 +41,10 @@ function statusLabel(entry: ArchiveEntry): { text: string; color: string } | nul
 function ArchiveCard({ entry }: { entry: ArchiveEntry }) {
   const label = statusLabel(entry);
   return (
-    <Link href={entry.isToday ? "/play" : `/archive/${entry.day}`} className="rounded-[13px]">
+    <Link href={entry.isToday ? "/play" : `/archive/${entry.day}`} className="block h-full rounded-[13px]">
       <div
         className={cn(
-          "flex min-h-[176px] flex-col gap-2.5 rounded-[13px] border border-border bg-surface p-5 shadow-[0_2px_10px_rgba(16,35,58,.04)]",
+          "flex h-full min-h-[176px] flex-col gap-2.5 rounded-[13px] border border-border bg-surface p-5 shadow-[0_2px_10px_rgba(16,35,58,.04)]",
           "transition-[transform,box-shadow] duration-150 hover:-translate-y-1 hover:shadow-[0_10px_26px_rgba(16,35,58,.1)]",
         )}
       >
@@ -58,7 +58,7 @@ function ArchiveCard({ entry }: { entry: ArchiveEntry }) {
             style={{ background: DIFFICULTY_COLOR[entry.case.difficulty] }}
           />
         </div>
-        <p className="flex-1 text-base leading-[1.35] font-bold text-ink">{entry.case.clues[0]}</p>
+        <p className="line-clamp-3 flex-1 text-base leading-[1.35] font-bold text-ink">{entry.case.clues[0]}</p>
         <p className="font-mono text-[10px] tracking-[0.1em] text-slate uppercase">
           {entry.isToday && (entry.status === "won" || entry.status === "lost")
             ? `${entry.case.categories[0]} · ${entry.case.difficulty}`
