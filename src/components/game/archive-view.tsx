@@ -61,7 +61,9 @@ function ArchiveCard({ entry }: { entry: ArchiveEntry }) {
         </div>
         <p className="flex-1 text-base leading-[1.35] font-bold text-ink">{entry.case.clues[0]}</p>
         <p className="font-mono text-[10px] tracking-[0.1em] text-slate uppercase">
-          {entry.case.categories[0]} · {entry.case.difficulty}
+          {entry.isToday && (entry.status === "won" || entry.status === "lost")
+            ? `${entry.case.categories[0]} · ${entry.case.difficulty}`
+            : entry.case.difficulty}
         </p>
         <p
           className="font-mono text-[10.5px] tracking-[0.14em] uppercase"

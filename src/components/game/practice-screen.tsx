@@ -111,7 +111,7 @@ export function PracticeScreen({ day }: { day: number }) {
               <div className="flex flex-wrap items-center gap-2.5">
                 <DifficultyDot difficulty={caseData.difficulty} />
                 <span className="font-mono text-xs tracking-[0.14em] text-cobalt uppercase">
-                  Case #{day} · {caseData.categories[0]} ·{" "}
+                  Case #{day} · {isDone && `${caseData.categories[0]} · `}
                   <span style={{ color: DIFFICULTY_TEXT_COLOR[caseData.difficulty] }}>{caseData.difficulty}</span>
                 </span>
               </div>

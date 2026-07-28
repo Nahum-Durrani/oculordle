@@ -52,7 +52,7 @@ export function HomeView() {
     let cancelled = false;
     (async () => {
       const daily = await getDailyCase();
-      if (!cancelled) setTagline(`${daily.categories[0] ?? ""} · ${daily.difficulty}`);
+      if (!cancelled) setTagline(daily.difficulty);
     })();
     return () => {
       cancelled = true;

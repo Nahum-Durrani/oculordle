@@ -80,7 +80,7 @@ export function GameScreen() {
             <div className="flex flex-wrap items-center gap-2.5">
               <DifficultyDot difficulty={todaysCase.difficulty} />
               <span className="font-mono text-xs tracking-[0.14em] text-cobalt uppercase">
-                Case #{dayNumber} · {todaysCase.categories[0]} ·{" "}
+                Case #{dayNumber} · {isDone && `${todaysCase.categories[0]} · `}
                 <span style={{ color: DIFFICULTY_TEXT_COLOR[todaysCase.difficulty] }}>{todaysCase.difficulty}</span>
               </span>
             </div>
