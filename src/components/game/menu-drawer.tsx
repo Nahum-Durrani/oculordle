@@ -36,8 +36,8 @@ export function MenuDrawer({ open, onOpenChange, onHowToPlay }: MenuDrawerProps)
         <DialogPrimitive.Content
           aria-describedby={undefined}
           className={cn(
-            "fixed inset-y-0 left-0 z-50 flex w-[300px] flex-col gap-1.5 bg-deep-navy px-6 py-6.5 text-white outline-none",
-            "shadow-[8px_0_40px_rgba(0,0,0,.3)]",
+            "fixed inset-y-0 left-0 z-50 flex w-[300px] flex-col gap-1.5 border-r border-border bg-surface px-6 py-6.5 text-ink outline-none",
+            "shadow-[8px_0_40px_rgba(11,46,88,.18)]",
             "data-open:animate-in data-open:slide-in-from-left data-open:duration-300",
             "data-closed:animate-out data-closed:slide-out-to-left data-closed:duration-200",
           )}
@@ -46,7 +46,7 @@ export function MenuDrawer({ open, onOpenChange, onHowToPlay }: MenuDrawerProps)
           <DialogDescription className="sr-only">Site navigation</DialogDescription>
 
           <div className="mb-6 flex items-center">
-            <Image src="/oculordle-logo.png" alt="Oculordle" width={1446} height={298} className="h-[30px] w-auto" />
+            <Image src="/oculordle-logo-dark.png" alt="Oculordle" width={1446} height={298} className="h-[30px] w-auto" />
           </div>
 
           <nav className="flex flex-col gap-1">
@@ -58,7 +58,7 @@ export function MenuDrawer({ open, onOpenChange, onHowToPlay }: MenuDrawerProps)
                     href={item.href}
                     className={cn(
                       "flex items-center justify-between rounded-[9px] px-3.5 py-3.5 font-body text-base font-semibold transition-colors duration-150",
-                      active ? "bg-white/8" : "hover:bg-white/8",
+                      active ? "bg-cobalt-soft text-cobalt" : "hover:bg-surface-sunken",
                     )}
                   >
                     {item.label}
@@ -73,14 +73,14 @@ export function MenuDrawer({ open, onOpenChange, onHowToPlay }: MenuDrawerProps)
                 onOpenChange(false);
                 onHowToPlay();
               }}
-              className="flex items-center justify-between rounded-[9px] px-3.5 py-3.5 text-left font-body text-base font-semibold transition-colors duration-150 hover:bg-white/8"
+              className="flex items-center justify-between rounded-[9px] px-3.5 py-3.5 text-left font-body text-base font-semibold transition-colors duration-150 hover:bg-surface-sunken"
             >
               How to Play
               <ArrowRight className="size-4 opacity-40" aria-hidden="true" />
             </button>
           </nav>
 
-          <p className="mt-auto font-mono text-[10px] leading-relaxed tracking-[0.14em] text-white/60 uppercase">
+          <p className="mt-auto font-mono text-[10px] leading-relaxed tracking-[0.14em] text-ink-soft uppercase">
             For medical education only — not medical advice.
           </p>
         </DialogPrimitive.Content>
