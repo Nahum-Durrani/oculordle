@@ -4,7 +4,7 @@ A daily diagnosis game for optometry and ophthalmology students. Each day
 unlocks one real clinical case — five progressively-revealed clues, five
 guesses, and teaching points at the end — in a Wordle-style format.
 
-**Play it:** [oculordle.vercel.app](https://oculordle.vercel.app) <!-- swap for the custom domain once purchased -->
+**Play it:** [oculordle.vercel.app](https://oculordle.org)
 
 ## How it works
 
