@@ -181,12 +181,9 @@ export function GuessCombobox({ cases, guessesMade, disabled, onSubmit, classNam
                     key={r.caseId}
                     value={`${r.caseId}-${r.canonicalName}`}
                     onSelect={() => handleSelect(r.canonicalName)}
-                    className="flex cursor-default items-center justify-between gap-2.5 border-b border-[#f1f4f8] px-4 py-3 text-[15px] text-ink transition-colors duration-100 last:border-b-0 data-[selected=true]:bg-cobalt-soft"
+                    className="flex cursor-default items-center gap-2.5 border-b border-[#f1f4f8] px-4 py-3 text-[15px] text-ink transition-colors duration-100 last:border-b-0 data-[selected=true]:bg-cobalt-soft"
                   >
                     <span>{r.canonicalName}</span>
-                    <span className="font-mono text-[10px] tracking-[0.1em] text-slate uppercase">
-                      {r.matchedAlias ?? ""}
-                    </span>
                   </CommandPrimitive.Item>
                 ))}
               </CommandPrimitive.Group>
