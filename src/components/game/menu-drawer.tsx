@@ -21,6 +21,8 @@ const NAV_ITEMS = [
   { href: "/stats", label: "Statistics" },
 ] as const;
 
+const MEET_THE_TEAM_HREF = "/#co-directors";
+
 /**
  * Left slide-in nav drawer, opened from the hamburger on every screen.
  * "How to Play" stays a callback into HowToPlayDialog rather than a
@@ -78,6 +80,15 @@ export function MenuDrawer({ open, onOpenChange, onHowToPlay }: MenuDrawerProps)
               How to Play
               <ArrowRight className="size-4 opacity-40" aria-hidden="true" />
             </button>
+            <DialogClose asChild>
+              <Link
+                href={MEET_THE_TEAM_HREF}
+                className="flex items-center justify-between rounded-[9px] px-3.5 py-3.5 font-body text-base font-semibold transition-colors duration-150 hover:bg-surface-sunken"
+              >
+                Meet the Team
+                <ArrowRight className="size-4 opacity-40" aria-hidden="true" />
+              </Link>
+            </DialogClose>
           </nav>
 
           <p className="mt-auto font-mono text-[10px] leading-relaxed tracking-[0.14em] text-ink-soft uppercase">
