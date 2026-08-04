@@ -18,7 +18,6 @@ const NAV_ITEMS = [
   { href: "/", label: "Home" },
   { href: "/play", label: "Today's Case" },
   { href: "/archive", label: "Archive" },
-  { href: "/stats", label: "Statistics" },
 ] as const;
 
 const MEET_THE_TEAM_HREF = "/#co-directors";
